@@ -109,8 +109,7 @@ Kmeans = KMeans(n_clusters= best_k , random_state= 42 , n_init= 10)
 
 rfm['segment'] = Kmeans.fit_predict(rfm_scaled) 
 
-print("RFM table with customer segments:")
-print(rfm)
+
 
 
 #============================
@@ -122,7 +121,8 @@ segment_summary = rfm.groupby('segment')[['recency','frequency','monetary']].mea
 segment_names = {0 : 'At Risk' , 1 : "Regular" , 2 : 'New Customer' , 3 : 'Champions'}
 segment_summary['segment_name'] = segment_summary.index.map(segment_names)
 rfm['segment_name'] = rfm['segment'].map(segment_names)
-
+print("RFM table with customer segments:")
+print(rfm)
 
 # Champions : هم عملاء مميزون انفاقهم مرتفع , بيشتروا بشكل متكرر , و اخر عملية شراء كانت قريبة
 # الاجراء التسويقي : عروض حصرية خاصه فيهم منشان احافظ عليهم كعملاء مميزين
